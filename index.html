@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNOX | Bio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="enter-screen" onclick="startPage()">
+        <p class="enter-text">[ CLICK TO ENTER ]</p>
+    </div>
+
+    <div id="volume-control" class="volume-container">
+        <i id="volume-icon" class="fa-solid fa-volume-high"></i>
+        <div class="volume-bar-bg">
+            <div id="volume-bar" class="volume-bar-yellow"></div>
+        </div>
+    </div>
+
+    <div class="video-background">
+        <iframe id="yt-player" 
+            src="https://www.youtube.com/watch?v=T_NKi5KHUdI&list=RDT_NKi5KHUdI&start_radio=1" 
+            frameborder="0" allow="autoplay">
+        </iframe>
+    </div>
+
+            <h1 class="main-title">MASTER</h1>
+            <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>
+            
+            <p class="hub-text">TRK HUB</p>
+            <p class="discord-hint">Join https://discord.gg/7abeVaAsUW to display your status</p>
+
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://discord.gg/7abeVaAsUW" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player');
+        }
+
+        function startPage() {
+            document.getElementById('enter-screen').style.display = 'none';
+            document.getElementById('main-content').style.opacity = '1';
+            document.getElementById('volume-control').style.display = 'flex';
+            if (player) {
+                player.unMute();
+                player.playVideo();
+            }
+        }
+
+        let isMuted = false;
+        document.getElementById('volume-control').onclick = function() {
+            let icon = document.getElementById('volume-icon');
+            let bar = document.getElementById('volume-bar');
+            if (isMuted) {
+                player.unMute();
+                icon.className = "fa-solid fa-volume-high";
+                bar.style.width = "100%";
+            } else {
+                player.mute();
+                icon.className = "fa-solid fa-volume-xmark";
+                bar.style.width = "0%";
+            }
+            isMuted = !isMuted;
+        };
+    </script>
+</body>
+</html>
