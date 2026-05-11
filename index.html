@@ -24,10 +24,7 @@
     </div>
 
     <div class="video-background">
-        <iframe id="yt-player" 
-            src="https://www.youtube.com/embed/B6bROSlA8xI?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=B6bROSlA8xI&showinfo=0&rel=0&modestbranding=1" 
-            frameborder="0" allow="autoplay; encrypted-media">
-        </iframe>
+        <div id="player"></div>
     </div>
 
     <div id="main-content">
@@ -49,11 +46,36 @@
         </div>
     </div>
 
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        let player;
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('yt-player');
+            player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: 'T_NKi5KHUdI', // Brainrot Rap Resmi Video ID
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'T_NKi5KHUdI',
+                    'mute': 1,
+                    'modestbranding': 1,
+                    'rel': 0,
+                    'showinfo': 0
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
         }
 
         function startPage() {
