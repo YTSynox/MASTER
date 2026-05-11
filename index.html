@@ -6,7 +6,6 @@
     <title>MASTER | Bio</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
-    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -57,16 +56,17 @@
             player = new YT.Player('player', {
                 height: '100%',
                 width: '100%',
-                videoId: 'T_NKi5KHUdI', // Brainrot Rap Resmi Video ID
+                videoId: 'T_NKi5KHUdI', // Brainrot Rap Video ID
                 playerVars: {
                     'autoplay': 1,
                     'controls': 0,
                     'loop': 1,
-                    'playlist': 'T_NKi5KHUdI',
+                    'playlist': 'T_NKi5KHUdI', // Döngü için gerekli
                     'mute': 1,
                     'modestbranding': 1,
                     'rel': 0,
                     'showinfo': 0,
+                    'disablekb': 1,
                     'iv_load_policy': 3
                 },
                 events: {
