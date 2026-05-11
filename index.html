@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYNOX | Bio</title>
+    
     <link rel="icon" type="image/png" href="favicon.png">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -23,14 +25,19 @@
 
     <div class="video-background">
         <iframe id="yt-player" 
-            src="https://www.youtube.com/watch?v=T_NKi5KHUdI&list=RDT_NKi5KHUdI&start_radio=1" 
-            frameborder="0" allow="autoplay">
+            src="https://www.youtube.com/embed/MJXHVdWzPks?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=MJXHVdWzPks&showinfo=0&rel=0&modestbranding=1" 
+            frameborder="0" allow="autoplay; encrypted-media">
         </iframe>
     </div>
 
+    <div id="main-content">
+        <div class="profile-card">
             <h1 class="main-title">MASTER</h1>
             <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
-            <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>
+            
+            <div class="location">
+                <i class="fa-solid fa-location-dot"></i> Turkey
+            </div>
             
             <p class="hub-text">TRK HUB</p>
             <p class="discord-hint">Join https://discord.gg/7abeVaAsUW to display your status</p>
@@ -55,22 +62,21 @@
             document.getElementById('volume-control').style.display = 'flex';
             if (player) {
                 player.unMute();
+                player.setVolume(50);
                 player.playVideo();
             }
         }
 
         let isMuted = false;
         document.getElementById('volume-control').onclick = function() {
-            let icon = document.getElementById('volume-icon');
-            let bar = document.getElementById('volume-bar');
             if (isMuted) {
                 player.unMute();
-                icon.className = "fa-solid fa-volume-high";
-                bar.style.width = "100%";
+                document.getElementById('volume-icon').className = "fa-solid fa-volume-high";
+                document.getElementById('volume-bar').style.width = "100%";
             } else {
                 player.mute();
-                icon.className = "fa-solid fa-volume-xmark";
-                bar.style.width = "0%";
+                document.getElementById('volume-icon').className = "fa-solid fa-volume-xmark";
+                document.getElementById('volume-bar').style.width = "0%";
             }
             isMuted = !isMuted;
         };
