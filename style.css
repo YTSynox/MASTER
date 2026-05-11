@@ -4,64 +4,71 @@ body, html {
     font-family: 'Arial', sans-serif; overflow: hidden;
 }
 
+/* Videonun Görünmesi İçin Kritik Ayarlar */
 .video-background {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -10; pointer-events: none;
-    background: #000;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1; /* İçeriğin arkasında ama siyah ekranın önünde */
+    pointer-events: none;
+    background: black;
 }
 
 #player {
-    width: 100vw; height: 56.25vw;
-    min-height: 100vh; min-width: 177.77vh;
-    position: absolute; top: 50%; left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 oranı */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 oranı */
+    position: absolute;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    filter: brightness(0.4); /* Videonun görünürlüğünü biraz artırdım */
+    filter: brightness(0.45) contrast(1.1); /* Videoyu biraz daha belirgin yaptım */
 }
 
 .profile-card {
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
     padding: 50px 40px; border-radius: 15px;
-    border: 1px solid rgba(255, 255, 0, 0.4);
-    text-align: center; width: 400px;
-    box-shadow: 0 0 30px rgba(255, 255, 0, 0.2);
+    border: 1px solid rgba(255, 255, 0, 0.5);
+    text-align: center; width: 420px;
+    box-shadow: 0 0 40px rgba(255, 255, 0, 0.15);
 }
 
 #main-content {
-    opacity: 0; transition: opacity 1.5s;
+    opacity: 0; transition: opacity 1s ease-in-out;
     display: flex; justify-content: center; align-items: center;
     height: 100vh; position: relative; z-index: 10;
 }
 
 .main-title {
-    font-size: 52px; color: #ffff00;
-    text-shadow: 0 0 20px #ffff00; font-weight: bold;
-    letter-spacing: 2px;
+    font-size: 58px; color: #ffff00;
+    text-shadow: 0 0 25px #ffff00; font-weight: bold;
+    margin: 0; letter-spacing: 3px;
 }
 
 .subtitle, .hub-text { color: #ffff00; font-weight: bold; margin: 15px 0; }
 .location { color: #eee; font-size: 14px; margin-bottom: 20px; }
-.location i { color: #ffff00; margin-right: 5px; }
-.discord-hint { font-size: 10px; color: #666; margin-bottom: 30px; }
+.location i { color: #ffff00; }
+.discord-hint { font-size: 10px; color: #777; margin-bottom: 30px; }
 
 .volume-container {
-    position: fixed; top: 25px; right: 25px;
-    background: rgba(0, 0, 0, 0.7); padding: 10px 15px;
-    border-radius: 10px; display: none; align-items: center; gap: 12px;
-    border: 1px solid #ffff00; z-index: 110; cursor: pointer;
+    position: fixed; top: 30px; right: 30px;
+    background: rgba(0, 0, 0, 0.8); padding: 12px 18px;
+    border-radius: 12px; display: none; align-items: center; gap: 15px;
+    border: 1px solid #ffff00; z-index: 1000; cursor: pointer;
 }
 
-.volume-bar-bg { width: 80px; height: 6px; background: #333; border-radius: 3px; }
-.volume-bar-yellow { width: 100%; height: 100%; background: #ffff00; box-shadow: 0 0 8px #ffff00; }
-#volume-icon { color: #ffff00; font-size: 18px; }
+.volume-bar-bg { width: 90px; height: 8px; background: #222; border-radius: 4px; }
+.volume-bar-yellow { width: 100%; height: 100%; background: #ffff00; box-shadow: 0 0 10px #ffff00; }
+#volume-icon { color: #ffff00; font-size: 20px; }
 
 #enter-screen {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: #000; z-index: 100; display: flex;
+    background: #000; z-index: 2000; display: flex;
     justify-content: center; align-items: center; cursor: pointer;
 }
 
-.enter-text { color: #ffff00; font-size: 18px; letter-spacing: 6px; text-shadow: 0 0 15px #ffff00; }
-.social-icons { display: flex; justify-content: center; gap: 25px; }
-.icon-link { color: white; font-size: 32px; transition: 0.3s; }
-.icon-link:hover { transform: translateY(-5px); color: #ffff00; }
+.enter-text { color: #ffff00; font-size: 20px; letter-spacing: 8px; text-shadow: 0 0 20px #ffff00; }
+.social-icons { display: flex; justify-content: center; gap: 30px; }
+.icon-link { color: white; font-size: 36px; transition: 0.3s; }
+.icon-link:hover { transform: scale(1.15); color: #ffff00; }
